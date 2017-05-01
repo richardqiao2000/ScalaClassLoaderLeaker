@@ -1,5 +1,6 @@
-# Class Loader Leaker
+# Heap & Class Loader Leaker
 
+* For Class Loader Leaker
 ```
 -verbose:gc
 -verbose:class
@@ -9,4 +10,15 @@
 -XX:+PrintGCTimeStamps
 -Xloggc:E:/code/scala-ide-4.50/ScalaClassLoaderLeaker/gc.log
 -Dfile.encoding=Cp1252
+```
+
+* For Heap Leaker
+```
+-Xmx256m
+-XX:-UseGCOverheadLimit
+-XX:+HeapDumpOnOutOfMemoryError
+-verbose:gc
+-XX:+PrintGCDetails
+-XX:+PrintGCTimeStamps
+-Xloggc:E:/code/scala-ide-4.50/ScalaClassLoaderLeaker/gc_heap.log
 ```

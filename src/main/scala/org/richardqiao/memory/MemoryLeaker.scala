@@ -7,10 +7,34 @@ import scala.collection.mutable._
 object MemoryLeaker {
   private val leakingMap = new HashMap[String, TraitData]()
   private final val ITERATIONS = 5000000
+  
+  private val map = new HashMap[String, Any]()
+  private final val pref = "HEREHREHEREHRE"
+  private final val slower = true
+  
   def main(args: Array[String]): Unit = {
-    metaSpaceLeaker
+    //metaSpaceLeaker
+    heapLeaker
   }
   
+  def heapLeaker{
+    println("Heap Leaker ..")
+    try{
+      for(i <- 0 until 10000000){
+        val data = pref + i
+        map.put(data, new Object())
+        if(slower){
+          Thread.sleep(1)
+        }
+      }
+    }catch{
+      case e: Exception => e.printStackTrace
+    }
+    println("Heap Leaker Ended")
+  }
+  /*
+   * 
+   */
   def metaSpaceLeaker{
     println("Scala Class Loader Leaker")
     try{
