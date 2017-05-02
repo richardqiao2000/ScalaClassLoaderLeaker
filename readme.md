@@ -22,3 +22,14 @@
 -XX:+PrintGCTimeStamps
 -Xloggc:E:/code/scala-ide-4.50/ScalaClassLoaderLeaker/gc_heap.log
 ```
+
+* For LUR Cache
+```
+-Xmx4m
+-XX:-UseGCOverheadLimit
+-XX:+HeapDumpOnOutOfMemoryError
+-verbose:gc
+-XX:+PrintGCDetails
+-XX:+PrintGCTimeStamps
+-Xloggc:E:/code/scala-ide-4.50/ScalaClassLoaderLeaker/gc_heap.log
+```
