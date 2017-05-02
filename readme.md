@@ -33,3 +33,5 @@
 -XX:+PrintGCTimeStamps
 -Xloggc:E:/code/scala-ide-4.50/ScalaClassLoaderLeaker/gc_heap.log
 ```
+
+* It's interesting jVisualVM will impact the original process and causing mem leaks :-D
