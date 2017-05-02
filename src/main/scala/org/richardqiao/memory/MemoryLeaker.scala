@@ -10,11 +10,11 @@ object MemoryLeaker {
   
   private val map = new HashMap[String, Any]()
   private final val pref = "HEREHREHEREHRE"
-  private final val slower = true
+  private final val slower = false
   
   def main(args: Array[String]): Unit = {
-    //metaSpaceLeaker
-    heapLeaker
+    metaSpaceLeaker
+    //heapLeaker
   }
   
   def heapLeaker{
@@ -23,6 +23,10 @@ object MemoryLeaker {
       for(i <- 0 until 10000000){
         val data = pref + i
         map.put(data, new Object())
+        println("Used Mem: " + Runtime.getRuntime().totalMemory() +
+                " Max Mem: " + Runtime.getRuntime().maxMemory()
+               )
+        println()
         if(slower){
           Thread.sleep(1)
         }
@@ -49,6 +53,10 @@ object MemoryLeaker {
                                               ).asInstanceOf[TraitData]
         //Comment this line off to see the good behaviour of Meta Space GC
         leakingMap.put(typeSeq, data)
+        println("Used Mem: " + Runtime.getRuntime().totalMemory() +
+                " Max Mem: " + Runtime.getRuntime().maxMemory()
+               )
+        println()
       }
     }catch{
         case e: Exception => e.printStackTrace

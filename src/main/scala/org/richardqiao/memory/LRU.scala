@@ -36,7 +36,7 @@ class LRU {
     var node = map(key)
     takeOut(node)
     map.remove(key)
-    node = null
+    //node = null
     counter -= 1
   }
   
@@ -85,9 +85,11 @@ object LRU{
         println("i: " + i)
         println("lru.size: " + lru.counter)
         println("map.size: " + lru.map.size)
-        println("Used Mem: " + Runtime.getRuntime().totalMemory())
+        println("Used Mem: " + Runtime.getRuntime().totalMemory() +
+                "Max Mem: " + Runtime.getRuntime().maxMemory()
+               )
         println()
-        Thread.sleep(1)
+        //Thread.sleep(1)
       }
     }catch{
       case e: Exception => e.printStackTrace
